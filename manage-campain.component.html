@@ -1,0 +1,250 @@
+
+<div class="container-fluid" *ngIf="showAdvancedSearch" >
+<div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseOne"
+        aria-expanded="false"
+        aria-controls="flush-collapseOne"
+      >
+        جستجوی پیشرفته
+      </button>
+    </h2>
+    <div
+      id="flush-collapseOne"
+      class="accordion-collapse collapse"
+      data-bs-parent="#accordionFlushExample"
+    >
+      <div class="accordion-body">
+        <div class="row gy-3">
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold">از تاریخ:</label>
+            <app-jalali-popup-date-picker
+              [dateId]="'date1'"
+              (dateSelected)="handleDate($event)">
+            </app-jalali-popup-date-picker>
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-bold">تا تاریخ:</label>
+            <app-jalali-popup-date-picker
+              [dateId]="'date2'"
+              (dateSelected)="handleDate($event)">
+            </app-jalali-popup-date-picker>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid px-3 pt-5">
+  <!-- متن راهنما با آیکون -->
+  <div class="row">
+    <div class="col-12 mb-2 d-flex align-items-center text-muted">
+      <i class="bi bi-info-circle-fill me-2"></i>
+      <small>جهت نمایش پیام‌های خود، عنوان کمپین را انتخاب کنید.</small>
+    </div>
+  </div>
+
+  <!-- دراپ‌داون و دکمه جستجو در یک ردیف -->
+  <div class="row align-items-center gy-3">
+    <!-- دراپ‌داون کمپین -->
+    <div class="col-12 col-md-8">
+      <div class="dropdown">
+        <button
+          class="btn btn-outline-primary dropdown-toggle shadow rounded custom-dropdown-button w-100"
+          type="button"
+          id="campaignDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          {{ selectedCampaign ? selectedCampaign.value : 'عنوان کمپین' }}
+        </button>
+        <ul class="dropdown-menu shadow rounded custom-dropdown-menu w-100" aria-labelledby="campaignDropdown">
+          <li *ngFor="let item of items">
+            <a class="dropdown-item custom-dropdown-item" (click)="selectCampaign(item)">
+              {{ item.value }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- دکمه جستجو -->
+    <div class="col-12 col-md-4 text-md-end">
+      <button class="btn btn-success px-4 py-2 w-100 w-md-auto mt-2 mt-md-0 animated-button pulse-button" (click)="logSelections()">
+      نمایش پیام های دریافتی 
+      </button>
+    </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+
+<div class="container my-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+    <div class="col" *ngFor="let card of cards">
+      <div
+        class="custom-card p-3"
+        [ngClass]="{ 'expanded-card': card.expanded }"
+      >
+        <!-- دکمه‌های بالا -->
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <img [src]="card.platform.icon" alt="پیام ناشناس پونز" class="platform-icon" />
+          <!-- //css coment shod// -->
+          <div>
+            <button
+              class="btn btn-sm icon-trash"
+              (click)="confirmDelete('cardMessage', card.id, card)"
+            >
+              <i class="bi bi-trash-fill"></i>
+            </button>
+            <button class="btn btn-sm icon-reply" 
+            (click)="openReplyBox(card.id, card.message)"
+            >
+              <i class="bi bi-reply-fill"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- اطلاعات پیام -->
+
+        <div class="mt-2 message-div">
+          <i class="bi bi-chat-square-text icon-message me-1"></i>
+          {{ card.message }}
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <!-- تاریخ و شماره موبایل -->
+          <div class="d-flex flex-column align-items-end">
+            <span class="date-text">
+              <i class="bi bi-calendar-range icon-calender"></i>
+              {{ formatPersianDate(card.date) }}
+            </span>
+            <span class="phone-number" *ngIf="card.phone">
+              <i class="bi bi-telephone-fill icon-phone"></i> {{ card.phone }}
+            </span>
+            
+          </div>
+          <button
+            *ngIf="card.relatedMessages.length >= 1"
+            class="btn btn-sm eye-icon"
+            (click)="toggleRelatedMessages(card, $event)"
+          >
+            <i
+              class="bi"
+              [ngClass]="card.expanded ? 'bi-eye-slash' : 'bi-eye'"
+            ></i>
+            <span class="ms-1 eye-write"> پیام‌ها </span>
+          </button>
+        </div>
+        <div *ngIf="card.expanded" class="related-messages mt-2 roll-down">
+          <ul class="list-group">
+            <li
+              class="list-group-item d-flex flex-column"
+              *ngFor="let msg of card.relatedMessages; let last = last"
+              [ngClass]="msg.userName ? 'admin-message' : 'user-message'"
+
+            >
+              <!-- ✅ پیام ریپلای شده -->
+              <div *ngIf="msg.repliedToMessage" class="replied-message">
+                <p class="replied-text">
+                  <strong>پاسخ به {{ msg.repliedToMessage.userName }}:</strong>
+                  {{ msg.repliedToMessage.message }}
+                </p>
+              </div>
+
+              <!-- ✅ متن پیام اصلی -->
+         
+              <div
+                class="message-content"
+              >
+              <p *ngIf="msg.userName" class="username-admin">
+                <i class="bi bi-person-fill-gear"></i> : {{ msg.userName }}
+              </p>
+              
+              
+                <p class="message">{{ msg.message }}</p>
+              </div>
+
+              <!-- ✅ دکمه‌های حذف و ریپلای -->
+              <div
+                class="d-flex justify-content-between align-items-center mt-2"
+              >
+                <span class="text-date">
+                  <i class="bi bi-calendar-range icon-calender"></i>
+                  {{ formatPersianDate(msg.date) }}
+                </span>
+
+                <div class="d-flex gap-2">
+                  <button
+                    class="btn btn-sm btn-outline-danger"
+                    (click)="confirmDelete('message', msg.id, card)"
+                  >
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                  <button
+                    class="btn btn-sm btn-outline-success"
+                    (click)="openReplyBox(msg.id, msg.message)"
+                  >
+                    <i class="bi bi-reply-fill"></i>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+    تعداد پیام‌ها: {{ cards.length }}
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li *ngFor="let card of cards">
+      <a class="dropdown-item" href="" (click)="toggleRelatedMessages(card, $event)">
+        <img [src]="card.platform.icon" alt="platform icon" class="platform-icon" />
+        {{ card.message }}
+        <span class="badge bg-secondary">{{ card.relatedMessages.length }}</span>
+      </a>
+    </li>
+  </ul>
+</div> -->
+
+<!-- ✅ دایو پاسخ که همیشه در بالا باز می‌شود -->
+<div class="reply-box" *ngIf="replyMessageId !== null">
+  <p><strong>پاسخ به:</strong> {{ replyingToText }}</p>
+  <textarea [(ngModel)]="replyText" placeholder="متن پاسخ..."></textarea>
+  <div class="reply-actions">
+    <button class="btn btn-success" (click)="sendReply()">ارسال</button>
+    <button class="btn btn-secondary" (click)="closeReplyBox()">بستن</button>
+  </div>
+</div>
+<!-- دیالوگ تأیید حذف -->
+<app-confirm-logout
+  *ngIf="showPopup"
+  [config]="{
+    message: 'آیا مطمئن هستید که می‌خواهید این مورد را حذف کنید؟',
+    message2: '',
+    buttons: [
+      { text: 'بله', color: 'red', textColor: 'white', action: 'confirm' },
+      { text: 'خیر', color: 'gray', textColor: 'white', action: 'cancel' }
+    ]
+  }"
+  (onAction)="handleDeleteConfirmation($event)"
+></app-confirm-logout>
+<div
+  class="overlay"
+  *ngIf="replyMessageId !== null"
+  (click)="closeReplyBox()"
+></div>
+

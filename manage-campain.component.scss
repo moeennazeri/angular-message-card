@@ -1,0 +1,555 @@
+/////////acording//////////
+.accordion {
+  background-color: hsl(228, 100%, 99%);
+  padding: 7px;
+  border: none;
+  text-align: right;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 3px #dbdbdb;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.button4 {
+  margin-right: 1rem;
+  border: none;
+  color: #fff;
+  background-image: linear-gradient(30deg, #4caf50, #45a047);
+  border-radius: 20px;
+  background-size: 100% auto;
+  font-family: inherit;
+  font-size: 17px;
+  padding: 0.6em 1.5em;
+}
+
+.button4:hover {
+  background-position: right center;
+  background-size: 200% auto;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse512 1.5s infinite;
+}
+
+@keyframes pulse512 {
+  0% {
+    box-shadow: 0 0 0 0 #05bada66;
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
+}
+//////////////////////dropdown//////////////////////////////////////////////
+
+li a {
+  text-decoration: none;
+  color: #2d2f31;
+}
+
+nav {
+  background: #ffff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 0 #dbdbdb;
+}
+
+.dop {
+  border-radius: 20px;
+  padding: 30px;
+  background: hsl(228, 85%, 63%);
+  color: white;
+  font-size: 1em;
+  font-variant: small-caps;
+  cursor: pointer;
+  display: block;
+}
+
+.dop::after {
+  float: right;
+  right: 10%;
+  content: "+";
+}
+
+.slide {
+  clear: both;
+  width: 100%;
+  height: 0px;
+  overflow: hidden;
+  text-align: center;
+  transition: height 0.4s ease;
+}
+
+.slide li {
+  padding: 30px;
+}
+
+#touch {
+  position: absolute;
+  opacity: 0;
+  height: 0px;
+}
+
+#touch:checked + .slide {
+  height: 300px;
+}
+
+.custom-dropdown {
+  width: 100%;
+  max-width: 250px;
+  margin: 10px auto;
+  display: block;
+  background: hsl(228, 85%, 63%);
+}
+.wide-form-field {
+  width: 100%; /* یا هر عرضی که مد نظر شماست */
+}
+mat-form-field {
+  background: #ffffff;
+  border-radius: 20px;
+
+  transition: all 0.3s ease-in-out;
+  min-height: 40px;
+}
+
+input[matInput] {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 20px;
+}
+mat-option {
+  font-size: 14px;
+  padding: 10px;
+  transition: background 0.3s ease-in-out;
+}
+mat-option:hover {
+  background: #e0e0e0;
+}
+.animated-dropdown {
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropd {
+  box-shadow: 0 0 10px 0 #dbdbdb;
+  margin-top: 1rem;
+}
+
+////////////////date pi////
+
+.date-picker-container {
+  position: relative;
+  width: 100%;
+  margin: 20px auto;
+}
+
+#dtp1 {
+  box-shadow: 0 0 10px 0 #dbdbdb;
+}
+#dtp2 {
+  box-shadow: 0 0 10px 0 #dbdbdb;
+}
+
+//////////card////////////
+.custom-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* فاصله بین بخش‌های مختلف کارت */
+.custom-card > div {
+  padding: 4px 3px;
+  // border-bottom: 1px solid #ddd; /* اضافه کردن خط جداکننده */
+}
+.message-div{
+ border-radius: 8px;
+ box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+//  background-color: #fdfcff;
+ border: 1px solid #7e8cf9;
+}
+/* حذف خط از آخرین بخش */
+.custom-card > div:last-child {
+  border-bottom: none;
+}
+
+// .platform-icon {
+//   width: 25px;
+//   height: 25px;
+// }
+
+/* طراحی آیکون سطل زباله */
+.icon-trash {
+  color: #e84c4c; /* رنگ اصلی قرمز تیره */
+  font-size: 14px; /* اندازه کوچکتر */
+  transition: color 0.3s ease; /* انیمیشن تغییر رنگ */
+  cursor: pointer;
+}
+
+/* طراحی آیکون ریپلای */
+.icon-reply {
+  color: #4caf50; /* رنگ سبز ملایم */
+  font-size: 14px; /* اندازه کوچکتر */
+  transition: color 0.3s ease; /* انیمیشن تغییر رنگ */
+  cursor: pointer;
+}
+
+.icon-phone {
+  color: #a095ff;
+}
+.icon-message {
+  color: #a095ff;
+  padding-right: 3px;
+}
+.icon-calender {
+  color: #a095ff;
+}
+
+.eye-icon {
+  color: #632aca;; /* رنگ آیکون */
+}
+.eye-write{
+  font-size: 12px;
+
+}
+.date-text {
+  font-size: small;
+  font-weight: bold;
+}
+
+.phone-number {
+  font-size: 12px; /* فونت کوچک‌تر */
+  color: #555; /* رنگ کمی کمرنگ‌تر برای ظاهری ملایم */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px; /* فاصله کم بین تاریخ و شماره */
+  margin-right: 5px;
+}
+/////////card when close////////////
+
+.custom-card {
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  // margin-bottom: 10px; /* فاصله بین کارت‌ها */
+}
+
+///////////////////card when open///////////related message////
+.expanded-card .date-text,
+.expanded-card .phone-number,
+.expanded-card .message-div,
+.expanded-card .eye-icon {
+  color: white;
+}
+
+.expanded-card {
+  background-color: #986de8; /* پس‌زمینه بنفش ملایم */
+  transition: all 0.3s ease-in-out;
+}
+
+/* استایل جدید برای پیام‌های اضافی */
+.expanded-card .related-messages {
+  background: #a095ff;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 12px;
+  max-height: 500px; /* مقدار مناسب برای ارتفاع پیام‌های اضافی */
+  opacity: 1;
+  box-shadow: 0 2px 8px rgba(159, 78, 251, 0.2);
+  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.roll-down {
+  animation: rollDown 1s ease-in-out; /* افزایش زمان انیمیشن به 1 ثانیه */
+}
+@keyframes rollDown {
+  0% {
+    max-height: 0;
+    opacity: 0; /* اضافه کردن افکت محو شدن */
+    transform: translateY(-20px); /* اضافه کردن افکت حرکت از بالا به پایین */
+  }
+  100% {
+    max-height: 500px; /* مقدار مناسب برای ارتفاع پیام‌های اضافی */
+    opacity: 1; /* اضافه کردن افکت محو شدن */
+    transform: translateY(0); /* اضافه کردن افکت حرکت از بالا به پایین */
+  }
+}
+
+.custom-card.expanded-card {
+  position: relative; /* وقتی کارت باز شد، این تضمین می‌کنه که پیام‌های اضافه درست داخل همون کارت نمایش داده بشن */
+  z-index: 99; /* کارت باز بالاتر از بقیه قرار بگیره */
+}
+
+.related-messages {
+  position: absolute;
+  top: 96%; /* پیام‌های اضافه دقیقاً زیر کارت باز شده */
+  left: 0;
+  width: 100%;
+  z-index: 100; /* مطمئن شوید که پیام‌های اضافه روی کارت‌های دیگر قرار می‌گیرند */
+  overflow: scroll;
+}
+
+.list-group-item {
+  margin-bottom: 10px; /* فاصله بین پیام‌ها */
+  border-radius: 8px; /* گرد کردن گوشه‌ها */
+  background: #fff; /* پس‌زمینه سفید */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* سایه ملایم */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* انیمیشن تغییرات */
+}
+
+.username-admin{
+  font-size: 13px;
+  color: #9571fc;
+}
+ //////////////////////replied message////////////////
+ 
+ .text-date{
+  color: #9571fc;
+  font-size: small;
+ }
+ .message{
+  color: #464646;
+ }
+ /* افزودن افکت هنگام باز شدن (به‌صورت ثابت) */
+.reply-message {
+  animation: fadeIn 2s ease-out; /* انیمیشن باز شدن */
+}
+.replied-text {
+  color: #6f61e8; /* رنگ متن برای بخش پاسخ به */
+  font-size: 14px; /* اندازه فونت مناسب */
+}
+
+.replied-message p {
+  margin: 0; /* حذف فاصله‌های اضافی */
+  padding: 0; /* حذف پدینگ اضافی */
+}
+
+.message-content {
+  padding-top: 10px; /* فاصله از بخش پاسخ به */
+} 
+
+.replied-message {
+  background-color: #eeeeee; /* تغییر رنگ پس‌زمینه وقتی که بر روی این بخش ها hover می‌شود */
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+////////////////////////////reply box css////////////////////
+/* اورلی */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3); /* مقدار کم‌تر برای تاریکی */
+  backdrop-filter: blur(8px); /* مات کردن پس‌زمینه پشت اورلی */
+  -webkit-backdrop-filter: blur(8px); /* پشتیبانی برای سافاری */
+  z-index: 9998;
+}
+
+
+.reply-box {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 9999; /* این لایه باید بالای اورلی قرار بگیرد */
+  display: flex;
+  flex-direction: column;
+}
+
+.reply-box textarea {
+  width: 100%;
+  height: 80px;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.reply-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.admin-message {
+  border-left: 4px solid #fbb8d2;; /* بوردر بنفش برای پیام‌های ادمین */
+  background-color: #fdf0f5;       /* پس‌زمینه بنفش روشن */
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.user-message {
+  border-left: 4px solid #b369fd; /* بوردر بنفش برای پیام‌های ادمین */
+  background-color: #f8f8f8;       /* پس‌زمینه بنفش روشن */
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  
+}
+
+
+
+///////load//////
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+////////dropdown///
+.custom-dropdown-button {
+  width: 100%;
+  text-align: right;
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  color: #495057;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  word-break: break-word; /* شکستن کلمات طولانی در دکمه */
+
+  &:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  &:focus {
+    border-color: #007bff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  &::after {
+    float: left !important;
+    margin-left: 0.255em !important;
+    margin-right: 0 !important;
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+  }
+}
+
+.custom-dropdown-menu {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  font-size: 1rem;
+  color: #212529;
+  max-height: 200px; /* ارتفاع دلخواه برای منو */
+  overflow-y: auto; /* ایجاد اسکرول عمودی در صورت نیاز */
+}
+
+.custom-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: normal;
+  overflow-wrap: break-word;
+  background-color: transparent;
+  border: 0;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: #1e2125;
+    background-color: #f8f9fa;
+    text-decoration: none;
+  }
+
+  &.active,
+  &:active {
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+  }
+}
+
+
+
+
+
+
+
+
+.animated-button {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.animated-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 128, 0, 0.3); /* سبز ملایم */
+  background-color: #198754 !important; /* رنگ سبز بوت‌استرپ */
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(25, 135, 84, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(25, 135, 84, 0);
+  }
+}
+
+.pulse-button {
+  animation: pulse 2s infinite;
+}
